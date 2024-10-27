@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Light Theme */
+body.light {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #ff0000;
+    --stroke-color:black;
+    --item-name-color: #000000;
+    --product-name-color: #000000;
+    --card-bg-color: white;
+    --button-bg-color: #ff0000;
+    --product-price-color: #ff0000;
+    --view-all-button-bg-color: #ff0000;
+    --add-all-to-cart-button-bg-color: #ff0000;
+    --checkout-button-bg-color: #ff0000; /* Proceed to Checkout button background color for light theme */
+    --item-price-color: #ff0000;
+    --arrow-svg-color: #000000;
+    --arrow-container-bg-color: #ffffff;
+    --page-bg-color: #f3f4f6;
+    --scroll-bg-color: #f3f4f6;
+    --features-text-color: #000000;
+    --wishlist-counter-color: #ff0000;
+    --cart-counter-color: #ff0000;
+    --buy-now-button-bg-color: #ff0000;
+    --counter-bg-color: #ff0000;
+    --counter-text-color: #ffffff;
+  }
+  
+  /* Dark Theme */
+  body.dark {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --primary-color: #bb86fc;
+    --stroke-color:white;
+    --item-name-color: #ffffff;
+    --product-name-color: #ffffff;
+    --card-bg-color: #1f1f1f;
+    --button-bg-color: #bb86fc;
+    --product-price-color: #ffffff;
+    --view-all-button-bg-color: #bb86fc;
+    --add-all-to-cart-button-bg-color: #bb86fc;
+    --checkout-button-bg-color: #bb86fc; /* Proceed to Checkout button background color for dark theme */
+    --item-price-color: #ffffff;
+    --arrow-svg-color: #ffffff;
+    --arrow-container-bg-color: #1f1f1f;
+    --page-bg-color: #f3f4f6;
+    --scroll-bg-color: #121212;
+    --features-text-color: #ffffff;
+    --wishlist-counter-color: #bb86fc;
+    --cart-counter-color: #bb86fc;
+    --buy-now-button-bg-color: #bb86fc;
+    --counter-bg-color: #bb86fc;
+    --counter-text-color: #121212;
+  }
+  
+  /* Apply the theme variables */
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  .bg-primary {
+    background-color: var(--primary-color);
+  }
+  
+  .text-primary {
+    color: var(--primary-color);
+  }
+  .stroke-color {
+    stroke: var(--stroke-color);
+  }
+  .item-name {
+    color: var(--item-name-color);
+  }
+  .product-name-color {
+    color: var(--product-name-color);
+  }
+  .card-bg {
+    background-color: var(--card-bg-color);
+  }
+  .button-bg {
+    background-color: var(--button-bg-color);
+  }
+  .product-price {
+    color: var(--product-price-color);
+  }
+  .view-all-button-bg {
+    background-color: var(--view-all-button-bg-color);
+  }
+  .add-all-to-cart-button-bg {
+    background-color: var(--add-all-to-cart-button-bg-color);
+  }
+  .checkout-button-bg {
+    background-color: var(--checkout-button-bg-color);
+  }
+  
+  .item-price {
+    color: var(--item-price-color);
+  }
+  .arrow-svg {
+    stroke: var(--arrow-svg-color);
+  }
+  .arrow-container-bg {
+    background-color: var(--arrow-container-bg-color);
+  }
+  .page-bg {
+    background-color: var(--page-bg-color);
+  }
+  .scroll-bg {
+    background-color: var(--scroll-bg-color);
+  }
+  .features-text {
+    color: var(--features-text-color);
+  }
+  .wishlist-counter {
+    color: var(--wishlist-counter-color);
+  }
+  .cart-counter {
+    color: var(--cart-counter-color);
+  }
+  .buy-now-button-bg {
+    background-color: var(--buy-now-button-bg-color);
+  }
+  .counter-bg {
+    background-color: var(--counter-bg-color);
+  }
+  .counter-text {
+    color: var(--counter-text-color);
+  }
