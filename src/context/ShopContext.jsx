@@ -2,10 +2,11 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 import head from '../assets/head.jpg';
 import control from '../assets/control.jpg';
 import graphic from '../assets/graphic.jpg';
-import chip  from '../assets/chip.jpg';
+import chip from '../assets/chip.jpg';
 
 const ShopContext = createContext();
-const getLocalStorage=(key, defaultValue) => {
+
+const getLocalStorage = (key, defaultValue) => {
   try {
     const item = window.localStorage.getItem(key);
     return item ? JSON.parse(item) : defaultValue;
@@ -14,6 +15,7 @@ const getLocalStorage=(key, defaultValue) => {
     return defaultValue;
   }
 };
+
 const setLocalStorage = (key, value) => {
   try {
     window.localStorage.setItem(key, JSON.stringify(value));
@@ -51,6 +53,7 @@ export const ShopProvider = ({ children }) => {
       image: graphic
     }
   ]);
+
   useEffect(() => {
     setLocalStorage('cart', cart);
   }, [cart]);
@@ -58,6 +61,15 @@ export const ShopProvider = ({ children }) => {
   useEffect(() => {
     setLocalStorage('wishlist', wishlist);
   }, [wishlist]);
+
+  const addAllToCart = () => {
+    setCart(prevCart => {
+      const newCart = [...prevCart, ...wishlist.map(item => ({ ...item, quantity: 1 }))];
+      setWishlist([]);
+      return newCart;
+    });
+  };
+
   const addToCart = (product) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id);
@@ -88,7 +100,7 @@ export const ShopProvider = ({ children }) => {
 
   const updateQuantity = (productId, newQuantity) => {
     setCart(prevCart => {
-      if (newQuantity===0) {
+      if (newQuantity === 0) {
         const newCart = prevCart.filter(item => item.id !== productId);
         return newCart;
       }
@@ -115,7 +127,7 @@ export const ShopProvider = ({ children }) => {
 
   const clearWishlist = () => {
     setWishlist([]);
-    setLocalStorage('wishlist',[]);
+    setLocalStorage('wishlist', []);
   };
 
   return (
@@ -130,6 +142,7 @@ export const ShopProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         clearWishlist,
+        addAllToCart,
         cartCount: cart.reduce((count, item) => count + item.quantity, 0),
         wishlistCount: wishlist.length
       }}>
@@ -137,6 +150,7 @@ export const ShopProvider = ({ children }) => {
     </ShopContext.Provider>
   );
 };
+
 export const useShop = () => {
   const context = useContext(ShopContext);
   if (!context) {

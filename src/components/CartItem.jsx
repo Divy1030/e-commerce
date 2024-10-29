@@ -20,7 +20,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
             className="px-3 py-1 border-r"
             onClick={() => onUpdateQuantity(item.id, Math.max(0, item.quantity - 1))}
           >
-            -
+            - 
           </button>
           <span className="px-4 py-1">{item.quantity}</span>
           <button 

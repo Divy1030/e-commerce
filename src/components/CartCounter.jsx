@@ -9,4 +9,4 @@ const CartCounter = ({ count }) => {
   );
 };
 
-export default CartCounter;
+export default CartCounter; 

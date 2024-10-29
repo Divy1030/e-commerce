@@ -12,25 +12,26 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
     minutes: 59,
     seconds: 35,
   });
+
   useEffect(() => {
-    const targetTime = new Date().getTime()+24*60*60*1000;
-    const timer = setInterval(() =>{
+    const targetTime = new Date().getTime() + 24 * 60 * 60 * 1000;
+    const timer = setInterval(() => {
       const now = new Date().getTime();
-      const distance=targetTime-now;
-      if (distance<0) {
+      const distance = targetTime - now;
+      if (distance < 0) {
         clearInterval(timer);
         setTimeRemaining({ hours: 0, minutes: 0, seconds: 0 });
         return;
       }
-      const hours=Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-      const minutes=Math.floor((distance % (1000*60* 60))/ (1000 * 60));
-      const seconds=Math.floor((distance % (1000 * 60)) / 1000);
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       setTimeRemaining({ hours, minutes, seconds });
     }, 1000);
 
     return () => clearInterval(timer);
-  },[]);
+  }, []);
 
   const handleAddToCart = (product) => {
     onAddToCart(product);
@@ -38,7 +39,7 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 px-4 sm:px-6 md:px-8 lg:px-12">
       <ToastContainer />
       <GamingText />
       <section>
@@ -46,23 +47,23 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
           <div className="w-3 h-8 bg-red-500 border-collapse rounded-sm"></div>
           Today's
         </div>
-        <h2 className="text-2xl font-bold mb-6 mt-4">Flash Sales</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 mt-4">Flash Sales</h2>
         <ProductGrid
           products={products}
-          onAddToCart={handleAddToCart} // Use the handleAddToCart function
+          onAddToCart={handleAddToCart}
           onToggleWishlist={onToggleWishlist}
           wishlist={wishlist}
         />
       </section>
-      <div className="flex flex-col items-center space-y-6">
-        <div className="flex space-x-4 mt-4">
-          <button className="flex items-center justify-center w-10 h-10 rounded-full arrow-container-bg  shadow"> {/* Use the CSS variable for arrow container background color */}
+      <div className="flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-6">
+        <div className="flex space-x-4">
+          <button className="flex items-center justify-center w-10 h-10 rounded-full arrow-container-bg shadow">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-5 h-5 arrow-svg" 
+              className="w-5 h-5 arrow-svg"
             >
               <path
                 strokeLinecap="round"
@@ -72,13 +73,13 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
               />
             </svg>
           </button>
-          <button className="flex items-center justify-center w-10 h-10 rounded-full arrow-container-bg shadow"> {/* Use the CSS variable for arrow container background color */}
+          <button className="flex items-center justify-center w-10 h-10 rounded-full arrow-container-bg shadow">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-5 h-5 arrow-svg" 
+              className="w-5 h-5 arrow-svg"
             >
               <path
                 strokeLinecap="round"
@@ -99,7 +100,7 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
           <div className="w-3 h-8 bg-red-500 border-collapse rounded-sm"></div>
           This month
         </div>
-        <h2 className="text-2xl font-bold mb-6 mt-4">Best Selling Products</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 mt-4">Best Selling Products</h2>
         <ProductGrid
           products={products}
           onAddToCart={handleAddToCart}
@@ -107,14 +108,14 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
           wishlist={wishlist}
         />
       </section>
-      <HorizontalScrollText /> 
+      <HorizontalScrollText />
       <div className="bg-white">
-        <section className="bg-black text-white py-12 px-4 lg:px-20 flex flex-col lg:flex-row items-center mt-30 ">
+        <section className="bg-black text-white py-12 px-4 sm:px-6 md:px-8 lg:px-12 flex flex-col sm:flex-row items-center mt-30">
           <div className="flex-1 space-y-6">
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
               Enhance Your Gaming Experience
             </h1>
-            <div className="flex space-x-6 justify-center lg:justify-start">
+            <div className="flex space-x-6 justify-center sm:justify-start">
               <div className="text-center">
                 <p className="text-3xl font-bold">{String(timeRemaining.hours).padStart(2, '0')}</p>
                 <p className="text-sm">Hours</p>
@@ -132,7 +133,7 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
               Buy Now!
             </button>
           </div>
-          <div className="flex-1 mt-8 lg:mt-0 lg:ml-12">
+          <div className="flex-1 mt-8 sm:mt-0 sm:ml-12">
             <img
               src="https://fdn.gsmarena.com/imgroot/news/24/02/apple-vision-pro-pre-order/-1200/gsmarena_000.jpg"
               alt="JBL Speaker"
@@ -141,7 +142,7 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
           </div>
         </section>
         <section className="py-12 bg-gray-400">
-          <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0 p-10">
+          <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center space-y-8 sm:space-y-0 p-10">
             <div className="text-center">
               <div className="arrow-container-bg p-4 rounded-full inline-block">
                 <svg
@@ -159,7 +160,7 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
                   />
                 </svg>
               </div>
-              <h3 className="font-bold text-lg mt-4 features-text">FREE AND FAST DELIVERY</h3> 
+              <h3 className="font-bold text-lg mt-4 features-text">FREE AND FAST DELIVERY</h3>
               <p className="text-sm text-gray-500 features-text">Free delivery for all orders over $140</p>
             </div>
             <div className="text-center">
@@ -186,7 +187,7 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
               <div className="arrow-container-bg p-4 rounded-full inline-block">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 arrow-svg" 
+                  className="h-8 w-8 arrow-svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -199,8 +200,8 @@ const HomePage = ({ products, onAddToCart, onToggleWishlist, wishlist }) => {
                   />
                 </svg>
               </div>
-              <h3 className="font-bold text-lg mt-4 features-text">MONEY BACK GUARANTEE</h3> {/* Use the CSS variable for features text color */}
-              <p className="text-sm text-gray-500 features-text">We return money within 30 days</p> {/* Use the CSS variable for features text color */}
+              <h3 className="font-bold text-lg mt-4 features-text">MONEY BACK GUARANTEE</h3>
+              <p className="text-sm text-gray-500 features-text">We return money within 30 days</p>
             </div>
           </div>
         </section>

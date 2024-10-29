@@ -34,7 +34,7 @@ const CartPage = ({ cart, onUpdateQuantity, onRemove }) => {
           Proceed to Checkout
         </button>
       </div>
-    </div>
+    </div> 
   );
 };
 
